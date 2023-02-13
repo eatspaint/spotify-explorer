@@ -3,13 +3,14 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    'prettier',
+    'plugin:storybook/recommended',
+    'prettier'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: ['./tsconfig.json'],
-    tsconfigRootDir: __dirname,
+    tsconfigRootDir: __dirname
   },
   plugins: ['@typescript-eslint'],
-  root: true,
+  root: true
 };
