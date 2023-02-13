@@ -1,0 +1,4 @@
+# Don't format config
+vite.config.ts
+.eslintrc.cjs
+prettier.config.cjs

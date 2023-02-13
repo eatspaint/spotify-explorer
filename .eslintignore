@@ -1,0 +1,4 @@
+# Don't lint config
+vite.config.ts
+.eslintrc.cjs
+prettier.config.cjs
