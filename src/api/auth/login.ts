@@ -3,7 +3,7 @@ import { buildUrl } from "../../lib/buildUrl";
 import { writeLocalStorage } from "../../lib/localStorage";
 import { usePKCE } from "../../lib/usePKCE";
 
-export const authRedirectUrl = "http://localhost:5173/oauth";
+export const authRedirectUrl = `${import.meta.env.VITE_URL_DOMAIN as string}/oauth`;
 
 // https://developer.spotify.com/documentation/general/guides/authorization/scopes/
 const authScopes = [
