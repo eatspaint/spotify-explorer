@@ -1,10 +1,18 @@
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { terms } from "../../api/getUserTopArtists";
 import { Button } from "../../components/Button";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export const LoggedIn = () => {
   const navigate = useNavigate();
   const { timeRange } = useParams();
+  const location = useLocation();
+
+  // react router doesn't do this natively 🙃
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   const handleGetTopArtists = (range: terms) => () => {
     navigate(`/my-top-artists/${range}`);
@@ -16,7 +24,7 @@ export const LoggedIn = () => {
 
   return (
     <div>
-      <div className="my-3 mx-6 flex flex-wrap justify-between">
+      <div className="my-3 mx-6 flex flex-wrap justify-between gap-2">
         <div className="flex gap-2">
           <Button
             active={timeRange === "short_term"}

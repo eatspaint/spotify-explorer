@@ -1,6 +1,6 @@
-import { LoaderFunction, useLoaderData } from "react-router-dom";
+import { LoaderFunction, useLoaderData, useParams } from "react-router-dom";
 import { checkFollowingArtists, getGenre } from "../api";
-import { Card } from "../components/Artist";
+import { Card, CardGrid } from "../components/Artist";
 
 interface GenreLoaderData {
   artists: SpotifyApi.ArtistSearchResponse["artists"]["items"];
@@ -19,16 +19,20 @@ export const genreLoader: LoaderFunction = async ({
 
 export const Genre = () => {
   const { artists, favorites } = useLoaderData() as GenreLoaderData;
+  const { genre } = useParams();
 
   if (artists) {
     return (
-      <ul className="mx-6 my-3 grid grid-cols-4 gap-3">
-        {artists.map((artist, i) => (
-          <li key={artist.id}>
-            <Card artist={artist} favorite={favorites[i]} />
-          </li>
-        ))}
-      </ul>
+      <div>
+        <h1 className="mx-6 text-xl text-red-500">{`#${String(genre)}`}</h1>
+        <CardGrid>
+          {artists.map((artist, i) => (
+            <li key={artist.id}>
+              <Card artist={artist} favorite={favorites[i]} />
+            </li>
+          ))}
+        </CardGrid>
+      </div>
     );
   }
 

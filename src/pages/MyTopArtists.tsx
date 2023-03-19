@@ -1,7 +1,7 @@
 import { LoaderFunction, useLoaderData } from "react-router-dom";
 import { checkFollowingArtists, getUserTopArtists } from "../api";
 import { terms } from "../api/getUserTopArtists";
-import { Card } from "../components/Artist";
+import { Card, CardGrid } from "../components/Artist";
 
 interface MyTopArtistsLoaderData {
   artists: SpotifyApi.UsersTopArtistsResponse["items"];
@@ -23,12 +23,12 @@ export const MyTopArtists = () => {
   const { artists, favorites } = useLoaderData() as MyTopArtistsLoaderData;
 
   return (
-    <ul className="mx-6 my-3 grid grid-cols-4 gap-3">
+    <CardGrid>
       {artists.map((artist, i) => (
         <li key={artist.id}>
           <Card artist={artist} favorite={favorites[i]} />
         </li>
       ))}
-    </ul>
+    </CardGrid>
   );
 };

@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { followArtist } from "../../api/followArtist";
 import { unfollowArtist } from "../../api/unfollowArtist";
 
@@ -11,6 +11,11 @@ export const Favorite = ({
   id: string;
 }) => {
   const [favorite, setFavorite] = useState<boolean>(Boolean(initialFavorite));
+
+  // Keep state in sync when the initial value changes
+  useEffect(() => {
+    setFavorite(Boolean(initialFavorite));
+  }, [initialFavorite]);
 
   // If no known initial value, get out
   if (initialFavorite === undefined) {
