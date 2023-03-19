@@ -2,3 +2,5 @@
 vite.config.ts
 .eslintrc.cjs
 prettier.config.cjs
+postcss.config.cjs
+tailwind.config.cjs

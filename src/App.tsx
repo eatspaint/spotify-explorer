@@ -1,7 +1,6 @@
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router";
+
 export const App = () => {
-  return (
-    <div>
-      <p>FOO :)</p>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 };
