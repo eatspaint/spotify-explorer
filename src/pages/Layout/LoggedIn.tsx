@@ -1,4 +1,9 @@
-import { Outlet, useNavigate, useParams } from "react-router-dom";
+import {
+  Outlet,
+  useNavigate,
+  useNavigationType,
+  useParams,
+} from "react-router-dom";
 import { terms } from "../../api/getUserTopArtists";
 import { Button } from "../../components/Button";
 import { useEffect } from "react";
@@ -6,11 +11,17 @@ import { useLocation } from "react-router-dom";
 
 export const LoggedIn = () => {
   const navigate = useNavigate();
+  const navigationType = useNavigationType();
   const { timeRange } = useParams();
   const location = useLocation();
 
   // react router doesn't do this natively 🙃
   useEffect(() => {
+    // attempting to preserve scroll location on back navigation
+    // really wish RR had more intuitive controls here
+    if (navigationType === "POP") {
+      return;
+    }
     window.scrollTo(0, 0);
   }, [location]);
 
